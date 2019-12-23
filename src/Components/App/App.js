@@ -4,10 +4,21 @@ import Main from '../Home/main-conatiner.js';
 import './App.css';
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      isSignIn:true
+    }
+  };
+  showForms = formName =>{
+    this.setState({
+      isSignIn:formName === "SignIn" ? true : false
+    });
+  };
   render (){
     return <div className="wrapper">
-      <Nav/>
-      <Main/>
+      <Nav showForms={this.showForms}/>
+      <Main isSignIn={this.state.isSignIn}/>
       <section className="boxes">
 
       </section>

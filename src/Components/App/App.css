@@ -32,3 +32,17 @@ body{
     list-style: none;
     grid-template-columns: repeat(4, 1fr);
 }
+.signinForm {
+    background-color: rgba(0, 255, 170, 0.74);
+}
+.signupForm {
+    background-color: rgba(28, 204, 107, 0.623);
+}
+.form-group {
+    display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+.form-group label{
+    
+}
