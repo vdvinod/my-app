@@ -9,7 +9,7 @@ class Nav extends React.Component {
           <li></li>
           <li></li>
           <li></li>
-          <li><Link to={"/signIn"}>Sign In</Link>/<Link to={"/signUp"}>Sign Up</Link></li>
+          <li><Link className="signInUp" to={"/signIn"}>Sign In</Link><Link className="signInUp" to={"/signUp"}>Sign Up</Link></li>
         
         </ul>
       </div>
