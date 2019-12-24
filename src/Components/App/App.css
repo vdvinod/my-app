@@ -11,7 +11,7 @@ html{
     color: var(--dark);
 }
 body{
-    background: #ccc;
+    background: #f4f4f400;
     margin: 30px 50px;
     line-height: 1.4;
 }
@@ -34,15 +34,59 @@ body{
 }
 .signinForm {
     background-color: rgba(0, 255, 170, 0.74);
+    width: 50%;
+    margin: auto;
+    border: 1px solid #80808038;
+    box-shadow: 5px 8px 10px #65bb8c7d;
+    padding: 10px 0px 10px 0px;
+    border-radius: 130px;
+
 }
 .signupForm {
     background-color: rgba(28, 204, 107, 0.623);
+    width: 50%;
+    margin: auto;
+    border: 1px solid #80808038;
+    box-shadow: 5px 8px 10px #65bb8c7d;
+    padding: 10px 0px 10px 0px;
+    border-radius: 170px;
 }
+.
 .form-group {
     display: flex;
    flex-direction: row;
    justify-content: center;
 }
 .form-group label{
-    
+    padding: 0px 50px 10px 0px;
+    text-align: right;
+}
+.input-control {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px solid black;
+    width: 250px;
+    background: rgba(94, 204, 144, 0);
+    outline: none;
+}
+form>div>input {
+    width: 43% !important;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+form>div>label {
+    width: 20%;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.button{
+    height: 30px;
+    width: 80px;
+    background: linear-gradient(45deg, #2b7981ad, #2b569887,#c9b44b94,#cb343478, #00000063);
+    border: 0px solid black;
+    box-shadow: 2px 2px 3px #0074809e;
+    border-radius: 3px;
+    outline: none;
 }
