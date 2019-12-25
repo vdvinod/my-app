@@ -1,19 +1,20 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 :root{
     --primary: #ddd;
-    --dark: #333;
+    --dark: rgb(21, 32, 43);
     --light: #fff;
     --shadow: 0px 1px 5px rgba(104,104,104,0.8);
 }
 html{
     box-sizing: border-box; 
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--dark);
+    color: var(--light);
 }
 body{
-    background: #f4f4f400;
+    background: rgb(21, 32, 43);;
     margin: 30px 50px;
     line-height: 1.4;
+    color: var(--light);
 }
 .btn {
     background:var(--dark);
@@ -32,24 +33,15 @@ body{
     list-style: none;
     grid-template-columns: repeat(4, 1fr);
 }
-.signinForm {
-    background-color: rgba(0, 255, 170, 0.74);
+.signup-inForm {
+    /* background-color: rgba(28, 204, 107, 0.623); */
     width: 50%;
     margin: auto;
-    border: 1px solid #80808038;
-    box-shadow: 5px 8px 10px #65bb8c7d;
-    padding: 10px 0px 10px 0px;
-    border-radius: 130px;
-
-}
-.signupForm {
-    background-color: rgba(28, 204, 107, 0.623);
-    width: 50%;
-    margin: auto;
-    border: 1px solid #80808038;
-    box-shadow: 5px 8px 10px #65bb8c7d;
+    /* border: 1px solid #80808038;
+    box-shadow: 5px 8px 10px #65bb8c7d; */
     padding: 10px 0px 10px 0px;
     border-radius: 170px;
+    height:300px;
 }
 
 .form-group {
@@ -60,12 +52,13 @@ body{
 .form-group label{
     padding: 0px 50px 10px 0px;
     text-align: right;
+    color: var(--light);
 }
 .input-control {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ffffff;
     width: 250px;
     background: rgba(94, 204, 144, 0);
     outline: none;
@@ -81,16 +74,15 @@ form>div>label {
     vertical-align: bottom;
 }
 .signInUp {
-    background-color: white;
-    border: 2px solid black;
-    color: green;
+    background-color: #15202a;
+    border: 2px solid #7a7a7a54;
+    color: #dfdfdf;
     padding: 5px 10px;
     text-align: center;
     display: inline-block;
     font-size: 20px;
     margin: 10px 0px;
     cursor: pointer;
-    -webkit-animation-duration: 10s;
     animation-duration: 1s;
     text-decoration: none !important;
 }
@@ -121,11 +113,107 @@ form>div>label {
     animation-name: fadeOut;
  }
 .button{
-    height: 30px;
-    width: 80px;
-    background: linear-gradient(45deg, #2b7981ad, #2b569887,#c9b44b94,#cb343478, #00000063);
-    border: 0px solid black;
-    box-shadow: 2px 2px 3px #0074809e;
+    height: 33px;
+    width: 110px;
+    margin: 20px 0px 0px 326px;
+    background: linear-gradient(45deg, #2b7981ad, #d6e6ff87,#9cc7e594,#f5a3a3ab, #cab67e);
+    border: 0px solid #e6f3f3;
+    box-shadow: 3px 3px 12px 2px #0074809e;
     border-radius: 3px;
     outline: none;
+    font-size: 24px;
+    font-family: fantasy;
+}
+.comment-container {
+    text-align: left;
+    background: #15191826;
+    /* margin: 0px !important; */
+    box-shadow: 0px 0px 20px 0px #293b4b;
+}
+.comment-box {
+    box-sizing: border-box;
+    margin: 10px 0px 10px 200px;
+    border: 0px;
+    box-sizing: 14px 0px 12px;
+    box-shadow: inset 0px 0px 8px 0px #293b4b;
+    background: #00804d00;
+    outline: none;
+    padding: 10px;
+    /* font-stretch: extra-expanded; */
+    font-family: monospace;
+}
+.comment-box::placeholder {
+    color: white;
+    font-size: 1.2em;
+  }
+.post-comment-container{
+    background: rgb(21, 32, 43);
+    height: 100vh;
+}
+.post-btn {
+    height: 40px;
+    width: 100px;
+    background: #141f28;
+    position: relative;
+    bottom: 20px;
+    margin: 0px 20px;
+    border-radius: 25px;
+    border: solid #363d44;
+    font-size: 20px;
+    box-shadow: 0px 0px 8px 0px #124776;
+    outline: none;
+}
+ @-webkit-keyframes glow {
+    0% {box-shadow: 0px 0px 8px 0px #124776;}
+    50% {box-shadow: 0px 0px 8px 0px #aac0d5;}
+    100% {box-shadow: 0px 0px 8px 0px #124776;}
+ }
+ 
+ @keyframes glow {
+    0%{box-shadow: 0px 0px 8px 0px #124776;}
+    50% {box-shadow: 0px 0px 8px 0px #aac0d5;}
+    100% {box-shadow: 0px 0px 8px 0px #124776;}
+ }
+.post-btn:hover{
+    -webkit-animation-name: glow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    transition: 10s;
+    animation-name: glow;
+}
+@-webkit-keyframes glowText {
+    0% {text-shadow: 0px 0px 20px #4c81af;}
+    50% {text-shadow: 0px 0px 20px#aac0d5;}
+    100% {text-shadow: 0px 0px 20px #4c81af;}
+ }
+ 
+ @keyframes glowText {
+    0% {text-shadow: 0px 0px 20px #4c81af;}
+    50% {text-shadow: 0px 0px 20px#aac0d5;}
+    100% {text-shadow: 0px 0px 20px #4c81af;}
+ }
+.brand-name{
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    transition: 10s;
+    animation-name: glowText;
+    display: inline;
+    font-size: 20px;
+    text-shadow: 0px 0px 20px #4c81af;
+    outline: none;
+}
+.brand-name::before{
+    content: "\f007";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #fff;
+    font-size: 30px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 24px;
+    left: 20px;
 }

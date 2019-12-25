@@ -1,13 +1,10 @@
 import React from "react"
-
+import {Link} from 'react-router-dom'
 class SignIn extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
             email: "",
-            phoneNo: undefined,
             password: ""
         };
         this.userList = [];
@@ -32,22 +29,26 @@ class SignIn extends React.Component {
         if(localStorage.getItem("userList")){
             this.userList = JSON.parse(localStorage.getItem("userList"));
         }
-        this.userList.push(user);
-        localStorage.setItem("userList",JSON.stringify(this.userList));
+        this.userList.forEach((function(val){
+            if(val.email === user.email && val.password === user.password){
+                let obj =Object.assign(val,{isAuth:true});
+                console.log(JSON.stringify(obj));
+                localStorage.setItem("AuthData",JSON.stringify(obj));
+                this.props.checkIsAuth(true);
+                this.props.history.push("/comment")
+            }
+        }).bind(this));
         this.setState((prevState)=>{
            const obj = {
-            firstName:"",
-            lastName: "",
             email: "",
-            phoneNo: "",
             password: ""
             };
             return obj;
         });
-        
+
     }
     render (){
-        return  <div className="signinForm">
+        return  <div className="signup-inForm">
         <header className="showcase">
                 <h2>Sign In</h2>
         </header>
@@ -61,8 +62,10 @@ class SignIn extends React.Component {
             <input type="password" className="input-control" name="password" value={this.state.password} onChange={this.changeUserData}/>
         </div>
         <div>
-           
-            <button className="button" type="submit" >Login</button>
+            <button className="button" type="submit">Login</button>
+            <div>
+                <Link to={`/signUp`}>click here to register</Link>
+            </div>
         </div>
     </form>
         </div>

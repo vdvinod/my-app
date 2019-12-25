@@ -1,20 +1,34 @@
 import React from "react";
 import SignIn from "./signIn.js";
 import SignUp from "./signUp.js";
-import {Route,Link} from 'react-router-dom'
+import Comments from "./comment.js";
+import {Route,Link} from 'react-router-dom';
+import CommentList from './commentlist';
 //import List from "./list.js";
-class MainConatiner extends React.Component {
+class MainConatiner extends React.Component { 
+    constructor(props){
+        super(props);
+        this.state={};
+        this.state.commentList=[];
+    }
+    addCommentList = (value)=>{
+        this.state.commentList.push(value);
+        this.setState({
+            commentList:this.state.commentList
+        });
+    }
     render() {
-        return <section className="main-container" align="center">
+        return <div><section className="main-container" align="center">
 
-                <Route path = "/signIn" component = {SignIn} />
+                <Route path = "/signIn" render={(props) => <SignIn {...props}  checkIsAuth={this.props.checkIsAuth}/>} />
                  <Route path = "/signUp" component = {SignUp} />
-            {/* <div className="top-box top-box-a">
-                 <h4 style={{display : this.state.userList.length ? "block" : "none"}}>List</h4>
-                <List userList={this.state.userList}/>
-            </div> */}
+
         </section>
-        
+        <section className="post-comment-container">
+             <Route path = "/comment" render={(props) => <Comments {...props}  addCommentList={this.addCommentList}/>} />
+             <CommentList commentList={this.state.commentList}/>
+        </section>
+        </div>
     }
 }
 

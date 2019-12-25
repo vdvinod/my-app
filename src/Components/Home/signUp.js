@@ -1,5 +1,5 @@
 import React from "react";
-
+import uuid from 'uuid'
 class SignUp extends React.Component {
     constructor(props){
         super(props);
@@ -7,9 +7,10 @@ class SignUp extends React.Component {
             firstName: "",
             lastName: "",
             email: "",
-            phoneNo: undefined,
+            phoneNo: "",
             password: ""
         };
+    
         this.userList = [];
         this.AddUserData = this.AddUserData.bind(this);
          this.changeUserData = this.changeUserData.bind(this);
@@ -27,7 +28,8 @@ class SignUp extends React.Component {
             lastName: this.state.lastName,
             email: this.state.email,
             phoneNo: this.state.phoneNo,
-            password: this.state.password
+            password: this.state.password,
+            userId: uuid.v4()
         };
         if(localStorage.getItem("userList")){
             this.userList = JSON.parse(localStorage.getItem("userList"));
@@ -44,9 +46,10 @@ class SignUp extends React.Component {
             };
             return obj;
         });
+        this.props.history.push("/signIn");
     }
     render (){
-        return <div className="signupForm">
+        return <div className="signup-inForm">
         <header className="showcase">
             <h2>Sign Up</h2>
         </header>
@@ -65,7 +68,7 @@ class SignUp extends React.Component {
         </div>
         <div>
             <label>Phone No</label>
-            <input type="number" className="input-control" name="phoneNo" value={this.state.phoneNo} onChange={this.changeUserData}/>
+            <input type="text" className="input-control" name="phoneNo" value={this.state.phoneNo} onChange={this.changeUserData}/>
         </div>
         <div>
             <label>Password</label>
