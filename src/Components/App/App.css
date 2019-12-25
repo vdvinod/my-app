@@ -130,6 +130,11 @@ form>div>label {
     /* margin: 0px !important; */
     box-shadow: 0px 0px 20px 0px #293b4b;
 }
+.comment-container::before {
+    content: "|";
+    height: 50px !important;
+}
+
 .comment-box {
     box-sizing: border-box;
     margin: 10px 0px 10px 200px;
@@ -216,4 +221,21 @@ form>div>label {
     position: absolute;
     top: 24px;
     left: 20px;
+}
+.show-comments-container{
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+.show-comments-container>div{
+    text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.box1{
+    grid-row: 1 / 4;
+    grid-column: 1 / 5;
+}
+.show-comments-container ul {
+    text-decoration: none;
+    list-style: none;
 }

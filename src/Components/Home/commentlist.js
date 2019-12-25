@@ -13,10 +13,20 @@ class CommentList extends React.Component {
     }
     render(){
         this.repeatList();
-        return <div>
-            <ul>
+        return <div className="show-comments-container">
+                <div className="box1">
+
+                </div>
+                <div>
+                <ul>
+                <li>asdasdadasd</li>
+                <li>asdasdadasd</li>
+                <li>asdasdadasd</li>
+                <li>asdasdadasd</li>
                {this.li}
             </ul>
+                </div>
+            
         </div>
     }
 }
