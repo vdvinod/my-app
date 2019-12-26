@@ -19,17 +19,17 @@ class Nav extends React.Component {
     render (){
       
         return <div className="main-nav">
-        {this.props.authData.isAuth && <div className="brand-name">{this.props.authData.firstName}</div>}
+        
         <ul>
         
-          <li></li>
+          <li>{this.props.authData.isAuth && <div className="brand-name">{this.props.authData.firstName}</div>}</li>
           <li></li>
           <li></li>
           {this.props.authData.isAuth ? 
-          <li>
+          <li style={{textAlign:'right'}}>
             <Link className="signInUp" style={{display:"inline-block"}} to={`/signIn`} onClick={this.logOut}>Log out</Link> </li>
           :
-          <li><Link className={this.state.isSignin?"signInUp fadeIn":"signInUp fadeOut"} style={{display:this.state.isSignin ? "inline-block":"none"}} onClick={this.changeSwitch} to={`/signIn`}>Sign In</Link><Link className={this.state.isSignin?"signInUp fadeOut":"signInUp fadeIn"}style={{display:this.state.isSignin ? "none":"inline-block"}} to={`/signUp`} onClick={this.changeSwitch}>Sign Up</Link>
+          <li style={{textAlign:'right'}}><Link className={this.state.isSignin?"signInUp fadeIn":"signInUp fadeOut"} style={{display:this.state.isSignin ? "inline-block":"none"}} onClick={this.changeSwitch} to={`/signIn`}>Sign In</Link><Link className={this.state.isSignin?"signInUp fadeOut":"signInUp fadeIn"}style={{display:this.state.isSignin ? "none":"inline-block"}} to={`/signUp`} onClick={this.changeSwitch}>Sign Up</Link>
           </li>}
         </ul>
       </div>

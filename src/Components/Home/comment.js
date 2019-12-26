@@ -35,6 +35,7 @@ class Comments extends React.Component {
                 <button onClick={this.postComment} className="post-btn">Post</button>
             </div>
         </div>
+        
         )}
 }
 

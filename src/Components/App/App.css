@@ -77,7 +77,7 @@ form>div>label {
     background-color: #15202a;
     border: 2px solid #7a7a7a54;
     color: #dfdfdf;
-    padding: 5px 10px;
+    padding: 2px 4px;
     text-align: center;
     display: inline-block;
     font-size: 20px;
@@ -85,6 +85,7 @@ form>div>label {
     cursor: pointer;
     animation-duration: 1s;
     text-decoration: none !important;
+
 }
 @-webkit-keyframes fadeIn {
     0% {opacity: 0;}
@@ -114,30 +115,33 @@ form>div>label {
  }
 .button{
     height: 33px;
-    width: 110px;
+    width: 100px;
     margin: 20px 0px 0px 326px;
     background: linear-gradient(45deg, #2b7981ad, #d6e6ff87,#9cc7e594,#f5a3a3ab, #cab67e);
     border: 0px solid #e6f3f3;
     box-shadow: 3px 3px 12px 2px #0074809e;
     border-radius: 3px;
     outline: none;
-    font-size: 24px;
-    font-family: fantasy;
+    font-size: 20px;
+    font-family: monospace;
 }
 .comment-container {
     text-align: left;
     background: #15191826;
     /* margin: 0px !important; */
     box-shadow: 0px 0px 20px 0px #293b4b;
+    position: relative;
 }
 .comment-container::before {
-    content: "|";
-    height: 50px !important;
+    content: "\26A1";
+    left:5px;
+    font-size: 20px;
+    position: absolute;
 }
 
 .comment-box {
     box-sizing: border-box;
-    margin: 10px 0px 10px 200px;
+    margin: 10px 0px 0px 150px;
     border: 0px;
     box-sizing: 14px 0px 12px;
     box-shadow: inset 0px 0px 8px 0px #293b4b;
@@ -224,18 +228,16 @@ form>div>label {
 }
 .show-comments-container{
     display: grid;
-    grid-template-columns: 100px auto;
+    grid-template-columns:200px auto 200px;
 }
 .show-comments-container>div{
-    text-align: center;
+  
   padding: 20px 0;
-  font-size: 30px;
+  font-size: 16px;
 }
-.box1{
-    grid-row: 1 / 4;
-    grid-column: 1 / 5;
-}
+
 .show-comments-container ul {
     text-decoration: none;
+    border-left: 2px solid black;
     list-style: none;
 }

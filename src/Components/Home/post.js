@@ -5,6 +5,10 @@ class CommentList extends React.Component {
         super(props);
         this.state={};
         this.state.commentList = this.props.commentList;
+        if(localStorage.getItem("AuthData")){
+           
+            this.userData=JSON.parse(localStorage.getItem("AuthData"));
+          }
     }
     repeatList=()=>{
         this.li = this.props.commentList.map((element,key) => {
@@ -19,10 +23,13 @@ class CommentList extends React.Component {
                 </div>
                 <div>
                 <ul>
-                <li>asdasdadasd</li>
-                <li>asdasdadasd</li>
-                <li>asdasdadasd</li>
-                <li>asdasdadasd</li>
+                    <li>
+                        <div>
+                            <span>Hi how are you doing ?</span>
+                            <span>like dislike reply</span>
+                        </div>
+                        
+                    </li>
                {this.li}
             </ul>
                 </div>

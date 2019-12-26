@@ -35,7 +35,7 @@ class SignIn extends React.Component {
                 console.log(JSON.stringify(obj));
                 localStorage.setItem("AuthData",JSON.stringify(obj));
                 this.props.checkIsAuth(true);
-                this.props.history.push("/comment")
+                this.props.history.push("/commentPost")
             }
         }).bind(this));
         this.setState((prevState)=>{
