@@ -19,7 +19,8 @@ class Comments extends React.Component {
         this.userComments ={
             comment:event.target.value,
             userId: this.userId,
-            commentId: uuid.v4()
+            commentId: uuid.v4(),
+            Likes:[]
         };
     };
     postComment = ()=>{

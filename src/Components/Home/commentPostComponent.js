@@ -10,6 +10,7 @@ class CommentPost extends React.Component {
         if(localStorage.getItem("postList")){
             this.state.commentList = JSON.parse(localStorage.getItem("postList"));
         }
+        
     }
     addCommentList = (value)=>{
         let postList = [];

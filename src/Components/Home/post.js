@@ -10,13 +10,18 @@ class CommentList extends React.Component {
             this.userData=JSON.parse(localStorage.getItem("AuthData"));
           }
         this.state.replyBox = {};
+        this.state.likesCount = "";
+    }
+    saveLike = (userId,index)=>{
+        this.props.commentList[index].Likes.push(userId);
+        localStorage.setItem("postList",JSON.stringify(this.props.commentList));
+        this.setState({likesCount:this.props.commentList[index].Likes.length})
     }
     showReplyBox=(key)=>{
-       
        this.setState({
-           replyBox:{
+           replyBox : {
                 [key]: <div className="replyContainer">
-                    <textarea className="replyBox" rows="2" cols="80"></textarea>
+                    <textarea className="replyBox" placeholder="reply ..." rows="2" cols="80"></textarea>
                     <button onClick={this.postComment} className="reply-btn-post">Reply</button>
                 </div>
              }});
@@ -36,7 +41,7 @@ class CommentList extends React.Component {
                     <div className="post-s">
                         {element.comment}
                         <div>
-                            <button className="btnLikeDislike">Like</button>
+        <button className="btnLikeDislike" onClick={()=>this.saveLike(element.userId,key)}>Like{element.Likes.length}</button>
                             <button className="btnLikeDislike">DisLike</button>
                             <button className="btnLikeDislike" onClick={()=>this.showReplyBox(key)}>reply</button>
                         </div>
