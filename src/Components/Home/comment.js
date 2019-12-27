@@ -27,6 +27,7 @@ class Comments extends React.Component {
             comment:""
         })
         this.props.addCommentList(this.userComments);
+        
     }
     render (){
         return (<div className="comment-container">

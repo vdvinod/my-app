@@ -6,12 +6,21 @@ class CommentPost extends React.Component {
     constructor(props){
         super(props);
         this.state={};
-        this.state.commentList=[];
+        this.state.commentList = [];
+        if(localStorage.getItem("postList")){
+            this.state.commentList = JSON.parse(localStorage.getItem("postList"));
+        }
     }
     addCommentList = (value)=>{
-        this.state.commentList.push(value);
+        let postList = [];
+        if(localStorage.getItem("postList")){
+            postList = JSON.parse(localStorage.getItem("postList"));
+        }
+        postList.push(value);
+        localStorage.setItem("postList",JSON.stringify(postList));
+       
         this.setState({
-            commentList:this.state.commentList
+            commentList:postList
         });
     }
     render(){

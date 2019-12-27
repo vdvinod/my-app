@@ -228,7 +228,7 @@ form>div>label {
 }
 .show-comments-container{
     display: grid;
-    grid-template-columns:200px auto 200px;
+    grid-template-columns:100px auto 200px;
 }
 .show-comments-container>div{
   
@@ -238,6 +238,50 @@ form>div>label {
 
 .show-comments-container ul {
     text-decoration: none;
-    border-left: 2px solid black;
+    /* border-left: 2px solid black; */
     list-style: none;
+}
+.postContainer {
+    box-shadow: 0px 0px 15px 1px #22303d;
+    padding: 10px;
+    animation-duration: 4s;
+    animation-name: fadeIn;
+}
+.postUserName {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #7e8990;
+}
+.post-s {
+    margin-left: 20px;
+}
+.btnLikeDislike {
+    font-size: 12px;
+    background: #15202b;
+    border: none;
+    margin: 4px;
+}
+.replyBox {
+    border: 0px;
+    box-shadow: inset 0px 0px 8px 0px #293b4b;
+    background: #00804d00;
+    outline: none;
+    padding: 5px;
+    /* font-stretch: extra-expanded; */
+    font-family: monospace;
+}
+.reply-btn-post {
+    background: #141f28;
+    position: relative;
+    bottom: 10px;
+    margin: 0px 20px;
+    border-radius: 25px;
+    border: solid #363d44;
+    font-size: 12px;
+    box-shadow: 0px 0px 8px 0px #124776;
+    outline: none;
+}
+.replyContainer {
+    animation-duration: 1s;
+    animation-name: fadeIn;
 }
