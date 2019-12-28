@@ -20,7 +20,8 @@ class Comments extends React.Component {
             comment:event.target.value,
             userId: this.userId,
             commentId: uuid.v4(),
-            Likes:[]
+            Likes:[],
+            replies:[]
         };
     };
     postComment = ()=>{
@@ -33,7 +34,7 @@ class Comments extends React.Component {
     render (){
         return (<div className="comment-container">
             <div>
-                <textarea className="comment-box"rows="5" cols="100" value={this.state.comment} onChange={this.commentChanged} placeholder="drop your comment here ..."></textarea>
+                <textarea className="comment-box"rows="5" cols="100" value={this.state.comment} onChange={this.commentChanged} placeholder="drop your Post here ..."></textarea>
                 <button onClick={this.postComment} className="post-btn">Post</button>
             </div>
         </div>

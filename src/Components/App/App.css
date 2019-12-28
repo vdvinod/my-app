@@ -281,7 +281,29 @@ form>div>label {
     box-shadow: 0px 0px 8px 0px #124776;
     outline: none;
 }
-.replyContainer {
+.replyContainer-fadeIn {
     animation-duration: 1s;
     animation-name: fadeIn;
+}
+.replyContainer-fadeOut{
+    animation-duration: 1s;
+    animation-name: fadeOut;
+}
+.comment-user-name {
+    font-size:14px;
+    margin:10px;
+    color: #7e8990;
+}
+.post-comment{
+    margin-left: 20px;
+    font-size:12px;
+}
+.commentList {
+    box-shadow: 0px 0px 15px 1px #22303d;
+    padding: 5px;
+    animation-duration: 4s;
+    animation-name: fadeIn;
+}
+.replyUl ul li:nth-child(n+3){
+    display: none;
 }
