@@ -307,3 +307,8 @@ form>div>label {
 .replyUl ul li:nth-child(n+3){
     display: none;
 }
+.showMore {
+    font-size: 12px;
+    margin-left: 440px;
+    cursor: pointer;
+}

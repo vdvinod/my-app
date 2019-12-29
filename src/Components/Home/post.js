@@ -12,11 +12,26 @@ class CommentList extends React.Component {
         this.state.replyBox = {};
         this.state.likesCount = "";
         this.reply ="";
+        this.previousUlId = {};
     }
     saveLike = (index)=>{
         this.props.commentList[index].Likes.push(this.userData.userId);
         localStorage.setItem("postList",JSON.stringify(this.props.commentList));
         this.setState({likesCount:this.props.commentList[index].Likes.length})
+    }
+    showMore = (id,currentId,isForPrevious)=>{
+    let ul = isForPrevious ? id : '#reply'+id+ ' li';
+       let listItems = document.querySelectorAll(ul);
+       for (let i = isForPrevious?2 :0; i < listItems.length; i++) {
+        listItems[i].style.display= isForPrevious  ? 'none' : 'block';
+      }
+      document.getElementById(currentId).style.display= isForPrevious ? 'block' : 'none';
+      
+      if(!isForPrevious && this.previousUlId.ulId){
+
+        this.showMore(this.previousUlId.ulId,this.previousUlId.showMoreid,true);
+      }
+      this.previousUlId = {ulId:ul,showMoreid:currentId};
     }
     savereplies = (index)=>{
         let obj = {
@@ -82,10 +97,12 @@ class CommentList extends React.Component {
                             {this.state.replyBox[key]}
                         </div>
                         <div className="replyUl">
-                            <ul >
+                            <ul id={'reply'+key}>
                                 {this.state.repliesLi}
                             </ul>
+                            {(element.replies.length > 2) && <div className="showMore" onClick={()=>this.showMore(key,'showMore'+element.commentId)} id={'showMore'+element.commentId}>Show All Comments</div>}
                         </div>
+
                     </div>
                 </li>
         });
