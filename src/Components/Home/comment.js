@@ -21,6 +21,7 @@ class Comments extends React.Component {
             userId: this.userId,
             commentId: uuid.v4(),
             Likes:[],
+            dislikes:[],
             replies:[]
         };
     };

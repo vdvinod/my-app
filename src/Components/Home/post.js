@@ -13,11 +13,33 @@ class CommentList extends React.Component {
         this.state.likesCount = "";
         this.reply ="";
         this.previousUlId = {};
+        this.state.isLiked = {}
     }
-    saveLike = (index)=>{
-        this.props.commentList[index].Likes.push(this.userData.userId);
+    saveLike = (index, notFromButton)=>{
+        let likeId = this.props.commentList[index].Likes.indexOf(this.userData.userId)
+        if(likeId<0){
+            this.props.commentList[index].Likes.push(this.userData.userId);
+        }else{
+            this.props.commentList[index].Likes.splice(likeId,1);
+        }
+        if(this.props.commentList[index].dislikes.indexOf(this.userData.userId) > -1 && this.props.commentList[index].Likes.indexOf(this.userData.userId) > -1){
+            this.props.commentList[index].dislikes.splice(this.props.commentList[index].dislikes.indexOf(this.userData.userId),1);
+        }
         localStorage.setItem("postList",JSON.stringify(this.props.commentList));
         this.setState({likesCount:this.props.commentList[index].Likes.length})
+    }
+    saveDislike = (index, notFromButton)=>{
+        let disLikeId = this.props.commentList[index].dislikes.indexOf(this.userData.userId)
+        if(disLikeId<0){
+            this.props.commentList[index].dislikes.push(this.userData.userId);
+        }else{
+            this.props.commentList[index].dislikes.splice(disLikeId,1);
+        }
+        if(this.props.commentList[index].Likes.indexOf(this.userData.userId) > -1 && this.props.commentList[index].dislikes.indexOf(this.userData.userId) > -1){
+            this.props.commentList[index].Likes.splice(this.props.commentList[index].Likes.indexOf(this.userData.userId),1);
+        }
+        localStorage.setItem("postList",JSON.stringify(this.props.commentList));
+        this.setState({disLikesCount:this.props.commentList[index].dislikes.length})
     }
     showMore = (id,currentId,isForPrevious)=>{
     let ul = isForPrevious ? id : '#reply'+id+ ' li';
@@ -89,8 +111,14 @@ class CommentList extends React.Component {
                     <div className="post-s">
                         {element.comment}
                         <div>
-        <button className="btnLikeDislike" onClick={()=>this.saveLike(key)}>Like{element.Likes.length}</button>
-                            <button className="btnLikeDislike">DisLike</button>
+                            <button className="btnLikeDislike" onClick={()=>this.saveLike(key)}> 
+                                <span style={{display:(element.Likes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Likes</span> 
+                                <span style={{display:(element.Likes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>Liked</span>
+                                <span style={{display:(element.Likes.length?"inline":"none")}}> {element.Likes.length}</span></button>
+                            <button className="btnLikeDislike" onClick={()=>this.saveDislike(key)}>
+                                <span style={{display:(element.dislikes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Dislikes</span> 
+                                <span style={{display:(element.dislikes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>DisLiked</span>
+                                <span style={{display:(element.dislikes.length?"inline":"none")}}> {element.dislikes.length}</span></button>
                             <button className="btnLikeDislike" onClick={()=>this.showReplyBox(key)}>comment</button>
                         </div>
                         <div>
