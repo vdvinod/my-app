@@ -312,3 +312,11 @@ form>div>label {
     margin-left: 440px;
     cursor: pointer;
 }
+.likeDislikes {
+    position: relative;
+}
+.likeDislikes .likeDislikeList {
+    position: absolute;
+    display: none;
+    list-style: none;
+}
