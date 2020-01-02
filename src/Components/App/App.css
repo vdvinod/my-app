@@ -319,4 +319,6 @@ form>div>label {
     position: absolute;
     display: none;
     list-style: none;
+    background: #576c80;
+    box-shadow: 0px 0px 4px 0px;
 }
