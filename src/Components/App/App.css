@@ -301,7 +301,7 @@ form>div>label {
 .commentList {
     box-shadow: 0px 0px 15px 1px #22303d;
     padding: 5px;
-    animation-duration: 4s;
+    animation-duration: 3s;
     animation-name: fadeIn;
 }
 .replyUl ul li:nth-child(n+3){
@@ -321,4 +321,7 @@ form>div>label {
     list-style: none;
     background: #576c80;
     box-shadow: 0px 0px 4px 0px;
+}
+.likeDislikes .likeDislikeList ul {
+    padding: 1px;
 }

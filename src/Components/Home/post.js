@@ -112,16 +112,16 @@ class CommentList extends React.Component {
                     <div className="post-s">
                         {element.comment}
                         <div className="likeDislikes">
-                            <button className="btnLikeDislike" onClick={()=>this.saveLike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'Likes')} onMouseOut={this.hideLikeDislikeList}> 
+                            <button className="btnLikeDislike" onClick={()=>this.saveLike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'Likes')} onMouseOut={()=>this.hideLikeDislikeList(key)}> 
                                 <span style={{display:(element.Likes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Likes</span> 
                                 <span style={{display:(element.Likes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>Liked</span>
                                 <span style={{display:(element.Likes.length?"inline":"none")}}> {element.Likes.length}</span></button>
-                            <button className="btnLikeDislike" onClick={()=>this.saveDislike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'dislikes')} onMouseOut={this.hideLikeDislikeList}>
+                            <button className="btnLikeDislike" onClick={()=>this.saveDislike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'dislikes')} onMouseOut={()=>this.hideLikeDislikeList(key)}>
                                 <span style={{display:(element.dislikes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Dislikes</span> 
                                 <span style={{display:(element.dislikes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>DisLiked</span>
                                 <span style={{display:(element.dislikes.length?"inline":"none")}}> {element.dislikes.length}</span></button>
                             <button className="btnLikeDislike" onClick={()=>this.showReplyBox(key)}>comment</button>
-                            <div className="likeDislikeList" id="likeDislikeList">
+                            <div className="likeDislikeList" id={'likeDislikeList'+key}>
                                 <ul>
                                     {this.state.likeDislikeList}
                                 </ul>
@@ -154,13 +154,13 @@ class CommentList extends React.Component {
             likeDislikeList: this.likeDislikeList
         })
       
-            document.getElementById("likeDislikeList").style.display= 'block';
-            document.getElementById("likeDislikeList").style.top= event.clientX;
-            document.getElementById("likeDislikeList").style.left= event.clientY;
+            document.getElementById("likeDislikeList"+key).style.display= 'block';
+            document.getElementById("likeDislikeList"+key).style.top= event.clientX;
+            document.getElementById("likeDislikeList"+key).style.left= event.clientY;
         
     }
-    hideLikeDislikeList = () =>{
-        document.getElementById("likeDislikeList").style.display= 'none';
+    hideLikeDislikeList = (key) =>{
+        document.getElementById("likeDislikeList"+key).style.display= 'none';
     }
     render(){
         this.repeatList();
