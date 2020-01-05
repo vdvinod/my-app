@@ -1,5 +1,5 @@
 import React from "react";
-
+import nestedReplies from "./nestedReplies";
 class CommentList extends React.Component {
     constructor(props){
         super(props);
@@ -67,15 +67,22 @@ class CommentList extends React.Component {
         // this.setState({likesCount:this.props.commentList[index].Likes.length})
          this.setState({replyBox:{}});
     };
-    changeReplies =(event)=>{
-       this.reply = event.target.value;
+    changeReplies =(event, key)=>{
+        this.reply = event.target.innerText;
+        if(event.which === 13 && event.shiftKey === true){
+            return false;
+        }else if(event.which === 13){
+            this.savereplies(key)
+        }
+       
     }
     showReplyBox=(key)=>{
        this.setState({
            replyBox : {
                 [key]: <div className="replyContainer-fadeIn">
-                    <textarea className="replyBox" onChange={this.changeReplies} placeholder="Comment ..." rows="2" cols="80"></textarea>
-                    <button onClick={()=>this.savereplies(key)} className="reply-btn-post">Reply</button>
+              
+                    <div contentEditable="true" placeholder="enter replies ..." className="replyBox" onKeyDown={(event)=>this.changeReplies(event,key)}/>
+
                 </div>
              }});
     }
@@ -95,7 +102,10 @@ class CommentList extends React.Component {
                     <div className="post-comment">
                     {reply.reply}
                     </div>
-                    
+                    <div>
+                        <span>Like</span>
+                        <span>Reply</span>
+                    </div>
                 </li>)
              });
             /// this.setState({repliesLi : repliesList});
