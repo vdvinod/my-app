@@ -81,30 +81,30 @@ class CommentList extends React.Component {
            replyBox : {
                 [key]: <div className="replyContainer-fadeIn">
               
-                    <div contentEditable="true" placeholder="enter replies ..." className="replyBox" onKeyDown={(event)=>this.changeReplies(event,key)}/>
+                    <div contentEditable="true" placeholder="Write a comment ..." className="replyBox" onKeyDown={(event)=>this.changeReplies(event,key)}/>
 
                 </div>
              }});
     }
     repeatList=()=>{
         this.li = this.props.commentList.map((element,key) => {
-                this.repliesLi = element.replies.map((reply,key)=>{
+                this.repliesLi = element.replies.map((reply,childKey)=>{
                 var userName = JSON.parse(localStorage.getItem("userList")).find((val) => {
                     if(val.userId === reply.userId){
                         return val;
                     }
                     return undefined;
                 });
-                return (<li key={key} className="commentList">
+                return (<li key={childKey} className="commentList">
                 <div className="comment-user-name">
                         {userName.firstName} {userName.lastName}
                     </div>
                     <div className="post-comment">
                     {reply.reply}
                     </div>
-                    <div>
+                    <div className="replyLike">
                         <span>Like</span>
-                        <span>Reply</span>
+                        <span onClick={()=>this.showReplyBox(key)}>Reply</span>
                     </div>
                 </li>)
              });
