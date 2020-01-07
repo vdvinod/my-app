@@ -1,5 +1,6 @@
 import React from "react";
-import uuid from 'uuid'
+import uuid from 'uuid';
+import Button from "../common/button";
 class SignUp extends React.Component {
     constructor(props){
         super(props);
@@ -76,7 +77,7 @@ class SignUp extends React.Component {
         </div>
         <div>
            
-            <button className="button" type="submit" >Sign Up</button>
+            <Button class="button" type="submit" buttonContent="Sign Up"/>
         </div>
         </form>
         </div>

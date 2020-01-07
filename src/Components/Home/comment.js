@@ -1,5 +1,6 @@
 import React from "react";
 import uuid from "uuid";
+import Button from "../common/button";
 class Comments extends React.Component {
     constructor(props){
         super(props);
@@ -36,7 +37,7 @@ class Comments extends React.Component {
         return (<div className="comment-container">
             <div>
                 <textarea className="comment-box"rows="5" cols="100" value={this.state.comment} onChange={this.commentChanged} placeholder="drop your Post here ..."></textarea>
-                <button onClick={this.postComment} className="post-btn">Post</button>
+                <Button clickHandler={this.postComment} class="post-btn" buttonContent='Post'/>
             </div>
         </div>
         

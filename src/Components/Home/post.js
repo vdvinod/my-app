@@ -1,5 +1,6 @@
 import React from "react";
 import nestedReplies from "./nestedReplies";
+import Button from "../common/button";
 class CommentList extends React.Component {
     constructor(props){
         super(props);
@@ -103,8 +104,11 @@ class CommentList extends React.Component {
                     {reply.reply}
                     </div>
                     <div className="replyLike">
-                        <span>Like</span>
-                        <span onClick={()=>this.showReplyBox(key)}>Reply</span>
+                        <Button class="btnLikeDislike" buttonContent="Like" />
+                        <Button class="btnLikeDislike" 
+                                clickHandler={()=>this.showReplyBox(key)}
+                                buttonContent="Reply" />
+            
                     </div>
                 </li>)
              });
@@ -122,15 +126,25 @@ class CommentList extends React.Component {
                     <div className="post-s">
                         {element.comment}
                         <div className="likeDislikes">
-                            <button className="btnLikeDislike" onClick={()=>this.saveLike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'Likes')} onMouseOut={()=>this.hideLikeDislikeList(key)}> 
-                                <span style={{display:(element.Likes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Likes</span> 
-                                <span style={{display:(element.Likes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>Liked</span>
-                                <span style={{display:(element.Likes.length?"inline":"none")}}> {element.Likes.length}</span></button>
-                            <button className="btnLikeDislike" onClick={()=>this.saveDislike(key)} onMouseOver={(event)=>this.showLikeDislikeList(event,key,'dislikes')} onMouseOut={()=>this.hideLikeDislikeList(key)}>
-                                <span style={{display:(element.dislikes.indexOf(this.userData.userId)===-1)?"inline":"none"}}>Dislikes</span> 
-                                <span style={{display:(element.dislikes.indexOf(this.userData.userId)>-1)?"inline":"none"}}>DisLiked</span>
-                                <span style={{display:(element.dislikes.length?"inline":"none")}}> {element.dislikes.length}</span></button>
-                            <button className="btnLikeDislike" onClick={()=>this.showReplyBox(key)}>comment</button>
+                            <Button 
+                                class="btnLikeDislike"
+                                clickHandler={()=>this.saveLike(key)} 
+                                mouseOverHandler={(event)=>this.showLikeDislikeList(event,key,'Likes')} 
+                                mouseOutHandler={()=>this.hideLikeDislikeList(key)}
+                                buttonContent={this.buttonContent(element.Likes,this.userData.userId,'Likes')}
+                            />
+                            <Button 
+                                class="btnLikeDislike"
+                                clickHandler={()=>this.saveDislike(key)} 
+                                mouseOverHandler={(event)=>this.showLikeDislikeList(event,key,'dislikes')} 
+                                mouseOutHandler={()=>this.hideLikeDislikeList(key)}
+                                buttonContent={this.buttonContent(element.dislikes,this.userData.userId,'dislikes')}
+                            />
+                            <Button 
+                                class="btnLikeDislike"
+                                clickHandler={()=>this.showReplyBox(key)} 
+                                buttonContent='comment'
+                            />
                             <div className="likeDislikeList" id={'likeDislikeList'+key}>
                                 <ul>
                                     {this.state.likeDislikeList}
@@ -151,6 +165,18 @@ class CommentList extends React.Component {
                 </li>
         });
     }
+
+    buttonContent=(LikesDislikes,userId,type)=>{
+        let value = '';
+        if(type==='dislikes'){
+             value = LikesDislikes.indexOf(userId)===-1?'Dislikes':'Disliked';
+        }else{
+             value = LikesDislikes.indexOf(userId)===-1?'Likes':'Liked';
+        }
+        
+        const noOfLikesDislikes = LikesDislikes.length ? LikesDislikes.length : '';
+        return value +' '+ noOfLikesDislikes;
+    };
 
     showLikeDislikeList = (event, key,list) => {
         

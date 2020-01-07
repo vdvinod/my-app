@@ -1,5 +1,6 @@
 import React from "react"
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Button from "../common/button";
 class SignIn extends React.Component {
     constructor(props){
         super(props);
@@ -62,7 +63,7 @@ class SignIn extends React.Component {
             <input type="password" className="input-control" name="password" value={this.state.password} onChange={this.changeUserData}/>
         </div>
         <div>
-            <button className="button" type="submit">Login</button>
+            <Button class="button" type="submit" buttonContent='Login'/>
             <div>
                 <Link to={`/signUp`}>click here to register</Link>
             </div>
